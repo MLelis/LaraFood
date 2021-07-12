@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')
             ->namespace('Admin')
+            ->middleware('auth')
             ->group(function () {
 
     /**
@@ -53,8 +55,8 @@ Route::prefix('admin')
      * Routes Details Plans
      */
     Route::delete('plans/{url}/details/{idDetails}', 'DetailPlanController@destroy')->name('details.plan.destroy');
-    Route::get('plans/{url}/details/{idDetails}', 'DetailPlanController@show')->name('details.plan.show');
     Route::get('plans/{url}/details/create', 'DetailPlanController@create')->name('details.plan.create');
+    Route::get('plans/{url}/details/{idDetails}', 'DetailPlanController@show')->name('details.plan.show');
     Route::put('plans/{url}/details/{idDetails}', 'DetailPlanController@update')->name('details.plan.update');
     Route::get('plans/{url}/details/{idDetails}/edit', 'DetailPlanController@edit')->name('details.plan.edit');
     Route::post('plans/{url}/details', 'DetailPlanController@store')->name('details.plan.store');
@@ -80,6 +82,9 @@ Route::prefix('admin')
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Site\SiteController@index')->name('site.home');
+
+/**
+ * Auth Routes
+ */
+Auth::routes();
