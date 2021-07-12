@@ -25,6 +25,17 @@ class Profile extends Model
         return $this->belongsToMany(Permission::class);
     }
 
+    /**
+     * Recuperar Planos
+     */
+    public function plan()
+    {
+        return $this->belongsToMany(Plan::class);
+    }
+
+    /**
+     * Recuperar permissões disponiveis
+     */
     public function permissionsAvailable($filter = null)
     {
         $permissions = Permission::whereNotIn('permissions.id', function($query) {
