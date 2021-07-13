@@ -19,6 +19,13 @@ Route::prefix('admin')
             ->middleware('auth')
             ->group(function () {
 
+
+    /**
+     * Routes Users
+     */
+    Route::any('users/search', 'UserController@search')->name('users.search');
+    Route::resource('users', 'UserController');
+
     /**
      * Plan x Profile
      */
