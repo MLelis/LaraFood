@@ -21,6 +21,13 @@ Route::prefix('admin')
 
 
     /**
+     * Routes Tenants
+     */
+    Route::any('tenants/search', 'TenantController@search')->name('tenants.search');
+    Route::resource('tenants', 'TenantController');
+
+
+    /**
      * Routes Tables
      */
     Route::any('tables/search', 'TableController@search')->name('tables.search');
