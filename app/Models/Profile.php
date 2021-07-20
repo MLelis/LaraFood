@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
-    use TenantTrait;
 
     protected $fillable = ['name', 'description'];
 

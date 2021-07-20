@@ -9,7 +9,11 @@
         <li class="breadcrumb-item active"><a href="{{ route('categories.index') }}" class="active">Categorias</a></li>
     </ol>
 
-    <h1>Categorias <a href="{{ route('categories.create') }}" class="btn btn-dark">ADD <i class="fas fa-plus-square"></i></a></h1>
+    <h1>Categorias
+        @can('add_cat')
+        <a href="{{ route('categories.create') }}" class="btn btn-dark">ADD <i class="fas fa-plus-square"></i></a>
+        @endcan
+    </h1>
 
 @stop
 
